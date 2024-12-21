@@ -1,0 +1,12 @@
+<!-- store/templates/store/register.html -->
+
+{% extends 'store/base.html' %}
+
+{% block content %}
+    <h2>Регистрация</h2>
+    <form method="POST" enctype="multipart/form-data" action="{% url 'register' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+{% endblock %}

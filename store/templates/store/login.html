@@ -1,0 +1,12 @@
+<!-- store/templates/store/login.html -->
+
+{% extends 'store/base.html' %}
+
+{% block content %}
+    <h2>Авторизация</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Войти</button>
+    </form>
+{% endblock %}

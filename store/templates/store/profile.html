@@ -1,0 +1,22 @@
+<!-- store/templates/store/profile.html -->
+
+{% extends 'store/base.html' %}
+
+{% block content %}
+    <h2>Профиль пользователя</h2>
+    <img src="{{ user.profile.avatar.url }}" alt="{{ user.username }}" width="150">
+    <p>Имя пользователя: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    <h3>Заказы:</h3>
+    <ul>
+        {% for order in orders %}
+        <li>
+            <strong>{{ order.product.name }}</strong> — заказ от {{ order.created_at|date:"d M Y H:i" }}
+            <br>
+            <img src="{{ order.product.image.url }}" alt="{{ order.product.name }}" style="max-height: 100px;">
+        </li>
+    {% empty %}
+        <p>Вы ещё не сделали ни одного заказа.</p>
+    {% endfor %}
+    </ul>
+{% endblock %}

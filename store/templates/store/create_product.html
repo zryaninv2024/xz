@@ -1,0 +1,10 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<h2>Создай заявку</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Добавить</button>
+</form>
+{% endblock %}

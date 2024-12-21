@@ -1,0 +1,20 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+    <h1>Добро пожаловать в наш интернет-магазин!</h1>
+    <p>Описание сайта: Здесь вы можете найти лучшие товары и услуги.</p>
+    <form method="GET" action="{% url 'search_result' %}">
+        <input type="text" name="q" placeholder="Поиск товаров или услуг...">
+        <button type="submit">Поиск</button>
+    </form>
+    <h2>Последние добавленные товары:</h2>
+    <ul>
+        {% for product in latest_products %}
+            <li>
+                <a href="{% url 'service_detail' product.pk %}">{{ product.name }}</a>
+            </li>
+        {% empty %}
+            <li>Нет добавленных товаров.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
